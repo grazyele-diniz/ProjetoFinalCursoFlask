@@ -1,10 +1,6 @@
-import os
-os.system('cls')
-
 from flask import Flask 
 from .extensions import db, migrate
-#adiciona isso
-from .routes.ucBp import ucBp
+from .routes.livroBp import livroBp
 
 def create_app():
     app = Flask(__name__)
@@ -14,7 +10,6 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app)
 
-    #e adiciona isso
-    app.register_blueprint(ucBp)
+    app.register_blueprint(livroBp)
 
     return app
