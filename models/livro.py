@@ -9,4 +9,4 @@ class Livro(db.Model):
     devolucao = db.Column(db.Date)
 
     def __repr__(self):
-        return "<Uc(titulo={}, vinculo={}, emprestimo={}, devolucao={})>".format(self.titulo, self.vinculo, self.emprestimo, self.devolucao)
+        return "<Livro(titulo={}, vinculo={}, emprestimo={}, devolucao={})>".format(self.titulo, self.vinculo, self.emprestimo, self.devolucao)
