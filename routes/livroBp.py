@@ -10,14 +10,20 @@ from datetime import date, datetime
 livroBp = Blueprint('livroBp', __name__)
 
 #criar a página de login inicial
-@livroBp.route('/')
+@livroBp.route('/login')
 def login_livro():
     return render_template('livro_login.html')
+
+@livroBp.route("/login_validar", methods=["POST","GET"])
+def login_livro_validar():
+    if request.form["usuario"] == "user" and request.form["senha"] == "123":
+        return redirect(url_for("livroBp.livro_list"))
+    else:
+        return render_template('livro_login_fail.html')
 
 @livroBp.route('/livro')
 def livro_list():
     #db.create_all()
-
     livros_query = Livro.query.all()
     return render_template('livro_list.html', livros=livros_query)
 
