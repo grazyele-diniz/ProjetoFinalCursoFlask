@@ -1,6 +1,6 @@
 # Importando o Blueprint
 from turtle import st
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, session, redirect, url_for
 from ..extensions import db
 from ..models.livro import Livro
 from datetime import date, datetime
@@ -8,6 +8,11 @@ from datetime import date, datetime
 #Instanciar o blueprint
 #livroBp = Blueprint('livroBp', __name__)
 livroBp = Blueprint('livroBp', __name__)
+
+#criar a página de login inicial
+@livroBp.route('/')
+def login_livro():
+    return render_template('livro_login.html')
 
 @livroBp.route('/livro')
 def livro_list():
