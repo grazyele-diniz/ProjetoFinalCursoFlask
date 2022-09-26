@@ -1,18 +1,16 @@
 # Importando o Blueprint
 from turtle import st
 from flask import Blueprint, render_template, request, redirect, url_for
-#adiciona isso
 from ..extensions import db
 from ..models.livro import Livro
 from datetime import date, datetime
 
 #Instanciar o blueprint
+#livroBp = Blueprint('livroBp', __name__)
 livroBp = Blueprint('livroBp', __name__)
 
 @livroBp.route('/livro')
 def livro_list():
-#    return "Teste"
-    #adiciona isso
     #db.create_all()
 
     livros_query = Livro.query.all()
@@ -53,10 +51,10 @@ def upd_livro():
     dDevolucao = datetime.strptime(request.form["devolucao"], '%Y-%m-%d')
 
     livro = Livro.query.filter_by(id = iLivro).first()
-    livro.nome = sTitulo
-    livro.tipo = sVinculo
-    livro.inicio = dEmprestimo
-    livro.fim = dDevolucao
+    livro.titulo = sTitulo
+    livro.vinculo = sVinculo
+    livro.emprestimo = dEmprestimo
+    livro.devolucao = dDevolucao
     db.session.add(livro)
     db.session.commit()
 
@@ -66,7 +64,7 @@ def upd_livro():
 @livroBp.route('/livro/delete/<livro_id>')
 def delete_livro(livro_id=0):
     livro_query = Livro.query.filter_by(id = livro_id).first()
-    return render_template('livro_delete.html', uc=livro_query)
+    return render_template('livro_delete.html', livro=livro_query)
 #Para apagar de fato
 @livroBp.route('/livro/dlt', methods=["POST"])
 def dlt_livro():
