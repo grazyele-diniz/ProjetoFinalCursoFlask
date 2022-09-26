@@ -6,13 +6,16 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">    
     </head>
     <body>
+        <br>
         <h1 style="text-align: center; font-style: italic;color: rgb(53, 50, 50);">CONTROLE DE EMPRÉSTIMOS DE LIVROS</h1>
+        <br>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <table class="table">
                         <thead>
                             <th>Título</th>
+                            <th>Nome</th>
                             <th>Vínculo</th>
                             <th>Data de Empréstimo</th>
                             <th>Data de Devolução</th>
@@ -22,16 +25,17 @@
                             {% for livro in livros%}
                             <tr>
                                 <td>{{livro.titulo}}</td>
+                                <td>{{livro.nome}}</td>
                                 <td>{{livro.vinculo}}</td>
                                 <td>{{livro.emprestimo}}</td>
                                 <td>{{livro.devolucao}}</td>
-                                <td><a href="/livro/update/{{livro.id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Alterar</a></td>
-                                <td><a href="/livro/delete/{{livro.id}}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Excluir</a></td>
+                                <td><a href="/livro/update/{{livro.id}}" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Alterar</a></td>
+                                <td><a href="/livro/delete/{{livro.id}}" class="btn btn-danger btn-md active" role="button" aria-pressed="true">Excluir</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-                    <a href="/livro/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo</a>
+                    <a href="/livro/create" class="btn btn-success btn-md active" role="button" aria-pressed="true">Novo</a>
                 </div>
             </div>
         </div>

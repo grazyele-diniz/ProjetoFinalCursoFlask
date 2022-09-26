@@ -6,7 +6,6 @@ from ..models.livro import Livro
 from datetime import date, datetime
 
 #Instanciar o blueprint
-#livroBp = Blueprint('livroBp', __name__)
 livroBp = Blueprint('livroBp', __name__)
 
 #criar a página de login inicial
@@ -23,7 +22,7 @@ def login_livro_validar():
 
 @livroBp.route('/livro')
 def livro_list():
-    #db.create_all()
+    db.create_all()
     livros_query = Livro.query.all()
     return render_template('livro_list.html', livros=livros_query)
 
@@ -35,11 +34,12 @@ def create_livro():
 def add_livro():
 
     sTitulo = request.form["titulo"]
+    sNome = request.form["nome"]
     sVinculo = request.form["vinculo"]
     dEmprestimo = datetime.strptime(request.form["emprestimo"], '%Y-%m-%d')
     dDevolucao = datetime.strptime(request.form["devolucao"], '%Y-%m-%d')
 
-    livro = Livro(titulo=sTitulo, vinculo=sVinculo, emprestimo=dEmprestimo, devolucao=dDevolucao)
+    livro = Livro(titulo=sTitulo, nome=sNome, vinculo=sVinculo, emprestimo=dEmprestimo, devolucao=dDevolucao)
     db.session.add(livro)
     db.session.commit()
 
@@ -57,12 +57,14 @@ def upd_livro():
 
     iLivro = request.form["id"]
     sTitulo = request.form["titulo"]
+    sNome = request.form["nome"]
     sVinculo = request.form["vinculo"]
     dEmprestimo = datetime.strptime(request.form["emprestimo"], '%Y-%m-%d')
     dDevolucao = datetime.strptime(request.form["devolucao"], '%Y-%m-%d')
 
     livro = Livro.query.filter_by(id = iLivro).first()
     livro.titulo = sTitulo
+    livro.nome = sNome
     livro.vinculo = sVinculo
     livro.emprestimo = dEmprestimo
     livro.devolucao = dDevolucao
