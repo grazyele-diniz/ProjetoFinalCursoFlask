@@ -7,7 +7,7 @@
     </head>
     <body>
         <br>
-        <h1 style="text-align: center;">CONTROLE DE EMPRÉSTIMOS DE LIVROS</h1>
+        <h1 style="text-align: center; font-style: italic;color: rgb(53, 50, 50);">CONTROLE DE EMPRÉSTIMOS DE LIVROS</h1>
         <br>
         <form method="POST" action="/livro/upd">
         <input type="hidden" id="id" name="id" value="{{livro.id}}">
@@ -17,11 +17,11 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <td>Título: </td>
+                                <td>Título do Livro: </td>
                                 <td><input type="text" name="titulo" id="titulo" value="{{livro.titulo}}" required></td>
                             </tr>
                             <tr>
-                                <td>Nome: </td>
+                                <td>Nome do Usu: </td>
                                 <td><input type="text" name="nome" id="nome" value="{{livro.nome}}" required></td>
                             </tr>
                             <tr>
@@ -36,13 +36,12 @@
                                 <td>Data de Devolução: </td>
                                 <td><input type="date" name="devolucao" id="devolucao" required format="dd/mm/yyyy" placeholder="DD-MM-YYYY" value="{{livro.devolucao}}"></td>
                             </tr>
-                            <tr>
-                                <td colspan="2"><input type="submit" class="btn btn-primary btn-md active" value="Alterar"></td>
-                                <td colspan="1"><a href="/livro" class="btn btn-light btn-md active" role="button" aria-pressed="true">Voltar</a></td> 
+                            <tr> 
                             </tr>                            
                         </tbody>
                     </table>
-                    
+                        <td colspan="2"><input type="submit" class="btn btn-primary btn-md active" value="Alterar"></td>
+                        <td colspan="1"><a href="/livro" class="btn btn-light btn-md active" role="button" aria-pressed="true">Voltar</a></td> 
                 </div>
             </div>
         </div>
